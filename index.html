@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonato Santa-Mariense</title>
+    <!-- Google Fonts para uma melhor tipografia -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset básico para garantir consistência entre navegadores */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000dc;
+            color: #FFFFFF;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #FF084C;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Sombra projetada preta */
+}
+        
+
+        .timer {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        .time-box {
+            background-color: #FFFFFF;
+            color: #000000;
+            padding: 5px 10px;
+            border-radius: 10px;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .label {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #FF084C;
+        }
+
+        .image-container {
+            margin-top: 40px;
+        }
+
+        .image-container img {
+            max-width: 15%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+                margin-bottom: 30px;
+            }
+
+            .time-box {
+                padding: 15px 10px;
+                min-width: 60px;
+            }
+
+            .time-box span {
+                font-size: 1.5em;
+            }
+
+            .label {
+                font-size: 0.8em;
+            }
+        }
+        .image-container {
+                margin-top: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>FEITO PELA COMUNIDADE, PARA A COMUNIDADE.</h1>
+
+    <div class="timer">
+        <div class="time-box">
+            <span id="days">0</span>
+            <div class="label">Dias</div>
+        </div>
+        <div class="time-box">
+            <span id="hours">0</span>
+            <div class="label">Horas</div>
+        </div>
+        <div class="time-box">
+            <span id="minutes">0</span>
+            <div class="label">Minutos</div>
+        </div>
+        <div class="time-box">
+            <span id="seconds">0</span>
+            <div class="label">Segundos</div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="img/Red and White Modern Geometric Basketball Final Match Instagram Post (4).png" alt="Imagem do Campeonato">
+    </div>
+
+    <script>
+        // Definindo a data final (21 de dezembro de 2024)
+        const targetDate = new Date("December 21, 2024 00:00:00").getTime();
+
+        // Atualizar o temporizador a cada segundo
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Cálculos de tempo
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Atualizar os elementos no DOM
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            // Se a contagem terminar, mostrar uma mensagem
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.querySelector(".timer").innerHTML = "<h2>O Torneio Começou!</h2>";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
+  
